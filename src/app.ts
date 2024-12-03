@@ -30,7 +30,7 @@ app.use(helmet());
 app.use(cors());
 app.options('*', cors());
 const corsOptions = {
-  origin: 'https://iotlab.tech',
+  origin: ['https://iotlab.tech', 'https://timetracker.gizantech.com'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
