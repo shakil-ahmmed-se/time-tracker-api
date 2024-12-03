@@ -28,14 +28,22 @@ if (config_1.default.env !== 'test') {
 // set security HTTP headers
 app.use((0, helmet_1.default)());
 // enable cors
-app.use((0, cors_1.default)());
-app.options('*', (0, cors_1.default)());
 const corsOptions = {
-    origin: 'https://iotlab.tech',
+    origin: [
+        'https://iotlab.tech',
+        'https://timetracker.gizantech.com',
+        'http://localhost:3002',
+        'http://localhost:3001',
+        'http://localhost:3000',
+        'http://localhost:3000',
+        'https://gt-original-time-tracking.vercel.app'
+        // Add this line
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 };
 app.use((0, cors_1.default)(corsOptions));
+app.options('*', (0, cors_1.default)());
 app.use((req, res, next) => {
     res.setHeader('Content-Security-Policy', 'upgrade-insecure-requests');
     next();

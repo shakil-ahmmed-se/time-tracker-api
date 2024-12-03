@@ -35,7 +35,9 @@ const corsOptions = {
     'http://localhost:3002',
     'http://localhost:3001',
     'http://localhost:3000',
-    'http://localhost:3000', // Add this line
+    'http://localhost:3000',
+    'https://gt-original-time-tracking.vercel.app'
+     // Add this line
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
