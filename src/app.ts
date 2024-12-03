@@ -29,9 +29,16 @@ app.use(helmet());
 // enable cors
 
 const corsOptions = {
-  origin: ['https://iotlab.tech', 'https://timetracker.gizantech.com','http://localhost:3002/', 'http://localhost:3001/', 'http://localhost:3000/'],
+  origin: [
+    'https://iotlab.tech',
+    'https://timetracker.gizantech.com',
+    'http://localhost:3002',
+    'http://localhost:3001',
+    'http://localhost:3000',
+    'http://localhost:3000', // Add this line
+  ],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  // credentials: true,
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
@@ -40,7 +47,6 @@ app.use((req, res, next) => {
   res.setHeader('Content-Security-Policy', 'upgrade-insecure-requests');
   next();
 });
-
 
 // parse json request body
 app.use(express.json());
