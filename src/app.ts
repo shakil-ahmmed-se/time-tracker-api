@@ -27,15 +27,15 @@ if (config.env !== 'test') {
 app.use(helmet());
 
 // enable cors
-app.use(cors());
-app.options('*', cors());
+
 const corsOptions = {
-  origin: ['https://iotlab.tech', 'https://timetracker.gizantech.com'],
+  origin: ['https://iotlab.tech', 'https://timetracker.gizantech.com','http://localhost:3002/', 'http://localhost:3001/', 'http://localhost:3000/'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors());
 app.use((req, res, next) => {
   res.setHeader('Content-Security-Policy', 'upgrade-insecure-requests');
   next();
