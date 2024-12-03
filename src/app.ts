@@ -45,6 +45,15 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.options('*', cors());
+// app.use(cors());
+
+// if (config.env === 'development') {
+//   app.use(cors());
+// } else {
+//   app.use(cors(corsOptions));
+// }
+
+
 app.use((req, res, next) => {
   res.setHeader('Content-Security-Policy', 'upgrade-insecure-requests');
   next();

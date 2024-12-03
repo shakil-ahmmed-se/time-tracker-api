@@ -13,7 +13,7 @@ import { IUserDoc } from '../user/user.interfaces';
 
 export const register = catchAsync(async (req: Request, res: Response) => {
   const user = await userService.registerUser(req.body);
-  // const tokens = await tokenService.generateAuthTokens(user);
+  const tokens = await tokenService.generateAuthTokens(user);
   // await emailService.sendSuccessfulRegistration(user.email, tokens.access.token, user.name||"");
   res.status(httpStatus.CREATED).send({ user });
   // res.status(httpStatus.CREATED).send(req.body);
@@ -22,7 +22,7 @@ export const register = catchAsync(async (req: Request, res: Response) => {
 export const login = catchAsync(async (req: Request, res: Response) => {
   const { email, password } = req.body;
   const user = await authService.loginUserWithEmailAndPassword(email, password);
-  // const tokens = await tokenService.generateAuthTokens(user);
+  const tokens = await tokenService.generateAuthTokens(user);
   res.send({ user });
 });
 
