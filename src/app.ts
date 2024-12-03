@@ -35,11 +35,12 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options('*', cors());
+// app.options('*', cors());
 app.use((req, res, next) => {
   res.setHeader('Content-Security-Policy', 'upgrade-insecure-requests');
   next();
 });
+
 
 // parse json request body
 app.use(express.json());
