@@ -48,16 +48,16 @@ const email_1 = require("../email");
 // import { logger } from '../logger';
 exports.register = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_1.userService.registerUser(req.body);
-    const tokens = yield token_1.tokenService.generateAuthTokens(user);
-    yield email_1.emailService.sendSuccessfulRegistration(user.email, tokens.access.token, user.name || "");
-    res.status(http_status_1.default.CREATED).send({ user, tokens });
+    // const tokens = await tokenService.generateAuthTokens(user);
+    // await emailService.sendSuccessfulRegistration(user.email, tokens.access.token, user.name||"");
+    res.status(http_status_1.default.CREATED).send({ user });
     // res.status(httpStatus.CREATED).send(req.body);
 }));
 exports.login = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     const user = yield authService.loginUserWithEmailAndPassword(email, password);
-    const tokens = yield token_1.tokenService.generateAuthTokens(user);
-    res.send({ user, tokens });
+    // const tokens = await tokenService.generateAuthTokens(user);
+    res.send({ user });
 }));
 // export const logout = catchAsync(async (req: Request, res: Response) => {
 //   await authService.logout(req.body.refreshToken);
